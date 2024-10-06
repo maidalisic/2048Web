@@ -44,4 +44,4 @@ jobs:
     steps:
       - name: Deploy to Tomcat
         run: |
-          scp target/2048Web.war user@your-server-ip:/path/to/tomcat/webapps/
+          scp target/2048Web.war github-runner@localhost:/usr/local/tomcat/webapps/
