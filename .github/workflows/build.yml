@@ -36,6 +36,13 @@ jobs:
       - name: Run Tests
         run: mvn test
 
+      - name: Check if WAR file exists
+        run: |
+          if [ ! -f "target/2048Web.war" ]; then
+            echo "WAR file does not exist. Build failed or incorrect packaging configuration."
+            exit 1
+          fi
+
       - name: Upload WAR artifact
         uses: actions/upload-artifact@v3
         with:
