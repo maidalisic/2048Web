@@ -42,6 +42,9 @@ jobs:
           name: 2048Web-war
           path: target/2048Web.war
 
+      - name: Confirm artifact upload
+        run: echo "Artifact uploaded successfully"
+
   deploy:
     runs-on: self-hosted
 
@@ -52,6 +55,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: 2048Web-war
+
+      - name: Confirm artifact download
+        run: echo "Artifact downloaded successfully"
 
       - name: Deploy to Tomcat
         run: |
