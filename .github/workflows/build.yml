@@ -36,12 +36,23 @@ jobs:
       - name: Run Tests
         run: mvn test
 
+      - name: Upload WAR artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: 2048Web-war
+          path: target/2048Web.war
+
   deploy:
     runs-on: self-hosted
 
     needs: build
 
     steps:
+      - name: Download WAR artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: 2048Web-war
+
       - name: Deploy to Tomcat
         run: |
-          cp target/2048Web.war /usr/local/tomcat/webapps/
+          cp 2048Web.war /usr/local/tomcat/webapps/
